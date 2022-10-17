@@ -19,7 +19,8 @@ In the meantime, below is an example of what you can do with just a few lines of
 
 uploaded_file = st.file_uploader('Upload pdf file:')
 if uploaded_file is not None:
-    df = tabula.read_pdf(uploaded_file, pages="all", multiple_tables=False)
-    df.to_excel('df_test.xlsx')
-    st.download_button(label='📥 Download Current Result',
+    dfs = tabula.read_pdf(uploaded_file, pages="all")
+    for df in dfs:
+        df.to_excel('df_test.xlsx')
+        st.download_button(label='📥 Download Current Result',
                                 data=df)
