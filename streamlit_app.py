@@ -20,6 +20,5 @@ uploaded_file = st.file_uploader('Upload pdf file:')
 if uploaded_file is not None:
     df = tabula.read_pdf(uploaded_file, pages="all", )
     df.to_excel('df_test.xlsx')
-
-st.download_button(label='📥 Download Current Result',
+    st.download_button(label='📥 Download Current Result',
                                 data=df)
