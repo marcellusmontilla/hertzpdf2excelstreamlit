@@ -4,6 +4,7 @@ import math
 import pandas as pd
 import streamlit as st
 import tabula
+from tabula.io import read_pdf
 
 """
 # Welcome to Streamlit!
