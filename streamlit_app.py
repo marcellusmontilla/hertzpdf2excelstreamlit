@@ -39,4 +39,4 @@ if uploaded_file is not None:
     new_df = pd.concat(dfs)
     df_xlsx = to_excel(new_df)
     st.download_button(label='📥 Download Current Result',
-                            data=df_xlsx,file_name='file.xlsx')
+                            data=df_xlsx,file_name=uploaded_file.name+'.xlsx')
