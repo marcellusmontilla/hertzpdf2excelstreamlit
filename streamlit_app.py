@@ -39,4 +39,4 @@ if uploaded_file is not None:
     for df in dfs:
         df_xlsx = to_excel(df)
         st.download_button(label='📥 Download Current Result',
-                                data=df_xlsx)
+                                data=df_xlsx,file_name='file.xlsx')
