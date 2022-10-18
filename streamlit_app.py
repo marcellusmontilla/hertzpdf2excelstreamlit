@@ -10,6 +10,7 @@ from tabula import read_pdf
 
 """
 # Hertz pdf to excel converter
+Specifically designed for AutoSweep RFID pdf.
 """
 
 def to_excel(df):
