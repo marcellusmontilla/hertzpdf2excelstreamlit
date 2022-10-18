@@ -3,6 +3,8 @@ import altair as alt
 import math
 import pandas as pd
 import streamlit as st
+from io import BytesIO
+from pyxlsb import open_workbook as open_xlsb
 import openpyxl
 from openpyxl import Workbook
 import tabula
@@ -19,10 +21,22 @@ forums](https://discuss.streamlit.io).
 In the meantime, below is an example of what you can do with just a few lines of code:
 """
 
+def to_excel(df):
+    output = BytesIO()
+    writer = pd.ExcelWriter(output, engine='xlsxwriter')
+    df.to_excel(writer, index=False, sheet_name='Sheet1')
+    workbook = writer.book
+    worksheet = writer.sheets['Sheet1']
+    format1 = workbook.add_format({'num_format': '0.00'}) 
+    worksheet.set_column('A:A', None, format1)  
+    writer.save()
+    processed_data = output.getvalue()
+    return processed_data
+
 uploaded_file = st.file_uploader('Upload pdf file:')
 if uploaded_file is not None:
     dfs = tabula.read_pdf(uploaded_file, pages="all")
     for df in dfs:
-        df.to_excel('df_test.xlsx')
+        df_xlsx = to_excel(df)
         st.download_button(label='📥 Download Current Result',
-                                data=df)
+                                data=df_xlsx)
