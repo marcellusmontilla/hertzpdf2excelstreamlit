@@ -4,3 +4,4 @@ streamlit
 tabula-py
 openpyxl
 pyxlsb
+xlsxwriter
