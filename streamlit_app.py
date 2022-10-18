@@ -35,7 +35,7 @@ def to_excel(df):
 
 uploaded_file = st.file_uploader('Upload pdf file:')
 if uploaded_file is not None:
-    dfs = tabula.read_pdf(uploaded_file, pages="all", pandas_options={'header': None}, relative_area = True, area = [17,0,83,100])
+    dfs = tabula.read_pdf(uploaded_file, pages="all", pandas_options={'header': None}, relative_area = True, area = [17,0,80,100])
     new_df = pd.concat(dfs)
     df_xlsx = to_excel(new_df)
     st.download_button(label='📥 Download Current Result',
