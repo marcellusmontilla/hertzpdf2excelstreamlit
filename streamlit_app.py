@@ -26,6 +26,7 @@ uploaded_file = st.file_uploader('Upload pdf file:')
 if uploaded_file is not None:
     dfs = tabula.read_pdf(uploaded_file, pages="all", pandas_options={'header': None}, relative_area = True, area = [17,0,80,100])
     new_df = pd.concat(dfs)
+    new_df[1] = new_df[1].replace(r"(\d{1,2}-\w+-\d{4})(\d{1,2}:\d{2}:\d{2})", r"\1 \2", regex=True).str.strip()
     df_xlsx = to_excel(new_df)
     st.download_button(label='📥 Download Excel version',
                             data=df_xlsx,file_name=uploaded_file.name+'.xlsx')
