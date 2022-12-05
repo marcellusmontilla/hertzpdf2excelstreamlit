@@ -26,7 +26,7 @@ uploaded_file = st.file_uploader('Upload pdf file:')
 if uploaded_file is not None:
     dfs = tabula.read_pdf(uploaded_file, pages="all", pandas_options={'header': None}, relative_area = True, area = [17,0,80,100])
     new_df = pd.concat(dfs)
-    // new_df[1] = new_df[1].replace(r"(\d{1,2}-\w+-\d{4})(\d{1,2}:\d{2}:\d{2})", r"\1 \2", regex=True).str.strip().replace(r'\s+', ' ', regex=True)
+    # new_df[1] = new_df[1].replace(r"(\d{1,2}-\w+-\d{4})(\d{1,2}:\d{2}:\d{2})", r"\1 \2", regex=True).str.strip().replace(r'\s+', ' ', regex=True)
     new_df["date"] = new_df[1].str.extract(r"(\d{1,2}-\w+-\d{4})")
     new_df[1] = new_df[1].str.replace('\d{1,2}-\w+-\d{4}','', n=1, regex=True)
     new_df = new_df[[0, 'date', 1, 2, 3, 4, 5]]
