@@ -31,7 +31,7 @@ if uploaded_file is not None:
     new_df["date"] = new_df["date"].str.strip()
     new_df[1] = new_df[1].str.replace('\d{1,2}-\w+-\d{4}','', n=1, regex=True)
     new_df[1] = new_df[1].str.strip()
-    new_df = new_df[[0, 'date', 1, 2, 3, 4, 5]]
+    new_df = new_df[[0, 'date', 1, 2, 3, 4]]
     df_xlsx = to_excel(new_df)
     st.download_button(label='📥 Download Excel version',
                             data=df_xlsx,file_name=uploaded_file.name+'.xlsx')
