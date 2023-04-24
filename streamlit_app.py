@@ -4,6 +4,8 @@ from io import BytesIO
 from pyxlsb import open_workbook as open_xlsb
 import tabula
 from tabula import read_pdf
+from datetime import datetime
+from typing import List, Dict
 
 """
 # Hertz pdf to excel converter
