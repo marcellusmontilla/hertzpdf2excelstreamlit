@@ -1,5 +1,3 @@
-pandas
-streamlit
-tabula-py
-pyxlsb
-xlsxwriter
+ ca-certificates-java
+ openjdk-17-jre-headless:amd64
+ openjdk-17-jre:amd64
